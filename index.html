@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Zihan Wang | Graphics / Engine / XR / CV-AI Portfolio</title>
+  <meta name="description" content="Zihan Wang (王滋涵) — Graphics Rendering, Engine, Game Dev, XR, Computer Vision & AI. UE5 BRDF, OpenGL engine, VR Uncanny Valley, 3DGS style transfer." />
+
+  <style>
+    :root{
+      --bg:#0b0d12; --card:#121623; --text:#e9ecf1; --muted:#aab2c5;
+      --line:#242b3d; --accent:#7aa2ff; --accent2:#7dffcf; --chip:#1a2236;
+      --warn:#ffd37a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;
+      background:linear-gradient(180deg,#0b0d12 0%, #0b0d12 40%, #0a1324 100%);
+      color:var(--text);
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1040px; margin:0 auto; padding:28px 18px 64px}
+    .topbar{display:flex; justify-content:space-between; align-items:center; gap:12px}
+    .brand{display:flex; align-items:center; gap:10px}
+    .dot{width:10px;height:10px;border-radius:50%; background:var(--accent2); box-shadow:0 0 18px rgba(125,255,207,.45)}
+    .nav{display:flex; gap:10px; flex-wrap:wrap; font-size:14px; color:var(--muted)}
+    .nav a{padding:8px 10px; border:1px solid transparent; border-radius:10px}
+    .nav a:hover{border-color:var(--line); background:rgba(255,255,255,.03)}
+
+    .hero{
+      margin-top:18px;
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:rgba(18,22,35,.72);
+      backdrop-filter: blur(10px)
+    }
+    .hero h1{margin:0; font-size:30px; letter-spacing:.2px}
+    .subtitle{margin-top:8px; color:var(--muted); line-height:1.6}
+    .badges{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
+    .badge{font-size:12px; color:#dbe3ff; background:rgba(122,162,255,.12); border:1px solid rgba(122,162,255,.25);
+      padding:6px 10px; border-radius:999px}
+    .cta{margin-top:16px; display:flex; gap:10px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 12px; border-radius:12px;
+      border:1px solid var(--line); background:rgba(255,255,255,.03);
+      font-size:14px; color:var(--text)
+    }
+    .btn.primary{border-color:rgba(122,162,255,.55); background:rgba(122,162,255,.16)}
+    .btn:hover{transform:translateY(-1px)}
+    .small{font-size:12px; color:var(--muted)}
+    section{margin-top:26px}
+    h2{margin:0 0 12px; font-size:18px}
+    h3{margin:0 0 6px; font-size:16px}
+    h4{margin:14px 0 6px; font-size:14px}
+    .grid{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:860px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{
+      border:1px solid var(--line);
+      background:rgba(18,22,35,.62);
+      border-radius:16px;
+      padding:16px
+    }
+    .cardhead{display:flex; justify-content:space-between; align-items:flex-start; gap:12px}
+    .title{font-weight:700}
+    .meta{color:var(--muted); font-size:12px; margin-top:4px; line-height:1.5}
+    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .chip{
+      font-size:12px; color:#cdd6ef; background:var(--chip);
+      border:1px solid rgba(255,255,255,.06);
+      padding:5px 9px; border-radius:999px
+    }
+    ul{margin:10px 0 0; padding-left:18px}
+    li{margin:6px 0; line-height:1.55}
+    .links{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap}
+
+    .filters{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+    .fbtn{
+      cursor:pointer; user-select:none; font-size:12px; color:var(--muted);
+      border:1px solid var(--line); background:rgba(255,255,255,.02);
+      padding:6px 10px; border-radius:999px
+    }
+    .fbtn.active{color:var(--text); border-color:rgba(122,162,255,.55); background:rgba(122,162,255,.12)}
+
+    .two{display:grid; grid-template-columns:1fr; gap:14px}
+    @media(min-width:860px){ .two{grid-template-columns:1.2fr .8fr} }
+
+    .qrimg{
+      width:150px; height:150px; border-radius:14px;
+      border:1px solid var(--line); background:#0b0d12;
+      object-fit:cover;
+    }
+
+    .note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,211,122,.25);
+      background:rgba(255,211,122,.08);
+      color:#ffe9c2;
+      font-size:12px;
+      line-height:1.6;
+    }
+    .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;}
+    .footer{
+      margin-top:30px; padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted); font-size:12px
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div style="font-weight:700">Zihan Wang · Portfolio</div>
+        <div class="small">Graphics / Engine / Game / XR / CV-AI</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Zihan Wang <span class="small">(王滋涵)</span></h1>
+    <div class="subtitle">
+      M.S. Computer Science @ RIT. Former NetEase VR (Unity/Quest) and Alibaba (Unity) intern. Current VR Developer at RIT MAGIC Spell Studios (Unreal).<br/>
+      Interests: real-time rendering, graphics/engine systems, XR interaction, and CV/AI/ML for 3D + virtual humans.
+    </div>
+
+    <div class="badges">
+      <span class="badge">C++ / C#</span>
+      <span class="badge">UE5 / Unity</span>
+      <span class="badge">OpenGL / Vulkan / HLSL</span>
+      <span class="badge">OpenXR / Meta SDK</span>
+      <span class="badge">PyTorch / OpenCV</span>
+    </div>
+
+    <div class="cta">
+      <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+      <a class="btn" href="https://github.com/ZihanWG" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:zihanwang7@outlook.com">Email</a>
+    </div>
+
+    <div class="note">
+      <b>Quick scan:</b> start from <span class="mono">Selected Projects</span> → open GitHub README for implementation → download resume if needed.
+    </div>
+  </div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Selected Projects</h2>
+
+    <div class="filters">
+      <div class="fbtn active" data-filter="all">All</div>
+      <div class="fbtn" data-filter="graphics">Graphics</div>
+      <div class="fbtn" data-filter="engine">Engine</div>
+      <div class="fbtn" data-filter="xr">XR</div>
+      <div class="fbtn" data-filter="cvai">CV / AI / ML</div>
+    </div>
+
+    <div class="grid">
+
+      <!-- Kulla-Conty BRDF -->
+      <div class="card project" data-tags="graphics,engine">
+        <div class="cardhead">
+          <div>
+            <div class="title">Kulla–Conty BRDF Integration in UE5</div>
+            <div class="meta">Role: Rendering Developer (Core Implementer) · C++ / HLSL / Unreal Engine 5</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">Monte Carlo GGX</span><span class="chip">BRDF LUT</span><span class="chip">Energy Compensation</span><span class="chip">UE5 Materials</span>
+        </div>
+        <ul>
+          <li>Built an offline Monte Carlo integrator to generate BRDF LUTs for multi-scattering energy compensation.</li>
+          <li>Integrated custom HLSL nodes in UE5 to achieve energy-conserving specular shading for rough materials.</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://github.com/THANKSHANK/KullaContyBRDF" target="_blank" rel="noopener">Repo</a>
+          <a class="btn" href="https://zihanwportfolio.wordpress.com/2025/05/06/integrating-kulla-conty-brdf-for-real-time-pbr-in-ue5/" target="_blank" rel="noopener">Write-up</a>
+        </div>
+      </div>
+
+      <!-- OpenGL Engine -->
+      <div class="card project" data-tags="engine,graphics">
+        <div class="cardhead">
+          <div>
+            <div class="title">C++ OpenGL Rendering Engine (cglEngine)</div>
+            <div class="meta">Role: Engine Developer / Architecture · C++ / OpenGL</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">PBR</span><span class="chip">Shadows</span><span class="chip">HDR</span><span class="chip">Post-processing</span>
+        </div>
+        <ul>
+          <li>Built a modular real-time rendering pipeline (PBR, shadows, HDR, post-processing).</li>
+          <li>Extended with ray tracing & super-sampling modules for real-time vs offline comparison.</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://github.com/THANKSHANK/cglEngine" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </div>
+
+      <!-- Uncanny Valley VR -->
+      <div class="card project" data-tags="xr">
+        <div class="cardhead">
+          <div>
+            <div class="title">Uncanny Valley VR Experimental System</div>
+            <div class="meta">Role: VR Tech Lead · Unity / Meta SDK / Face Tracking</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">Facial Tracking</span><span class="chip">Expression Mapping</span><span class="chip">Eye Micro-motion</span>
+        </div>
+        <ul>
+          <li>Built facial tracking-driven expression mapping with smoothing/synchronization.</li>
+          <li>Reduced negative user feedback by ~35% through iterative realism tuning.</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://github.com/THANKSHANK/UncannyValleyVR" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </div>
+
+      <!-- 3DGS Style Transfer -->
+      <div class="card project" data-tags="cvai,graphics">
+        <div class="cardhead">
+          <div>
+            <div class="title">Real-time 3D Style Transfer (3DGS)</div>
+            <div class="meta">Role: Project Lead · PyTorch / 3D Gaussian Splatting</div>
+          </div>
+        </div>
+        <div class="chips">
+          <span class="chip">LPIPS</span><span class="chip">Reprojection Consistency</span><span class="chip">Temporal Stability</span>
+        </div>
+        <ul>
+          <li>Designed a stability-first pipeline to reduce temporal flickering in real-time 3D stylization.</li>
+          <li>Achieved ~4% lower warping error on NeRF-Synthetic scenes with improved coherence.</li>
+        </ul>
+        <div class="links">
+          <a class="btn" href="https://github.com/THANKSHANK/3DStyle_Transfer_3DGS" target="_blank" rel="noopener">Repo</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="small" style="margin-top:10px;">
+      Tip: Add 2–3 result images and a short demo video link (e.g., Bilibili/YouTube) to each project README for faster reviewer evaluation.
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="grid">
+
+      <div class="card">
+        <div class="title">RIT MAGIC Spell Studios — VR Developer (Unreal)</div>
+        <div class="meta">Aug 2025 – Present · Rochester, NY</div>
+        <ul>
+          <li>Develop VR research prototypes and immersive applications in Unreal Engine (C++/Blueprint).</li>
+          <li>Build reusable interaction/character/scene modules; integrate features for demos and user studies.</li>
+          <li>Optimize runtime performance and stability for multiple testing and showcase iterations.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="title">NetEase — Virtual Reality Developer Intern</div>
+        <div class="meta">Mar 2023 – Aug 2023 · Guangzhou, China</div>
+        <ul>
+          <li>Developed Unity + Meta Quest VR gameplay demos; reduced frame drops by ~15% via optimization.</li>
+          <li>Improved interaction stability; increased internal test engagement by ~30%.</li>
+          <li>Collaborated with designers/artists/QA; shortened iteration cycles by ~20%.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="title">Alibaba Group — Unity Game Developer Intern</div>
+        <div class="meta">Jun 2022 – Aug 2022 · Hangzhou, China</div>
+        <ul>
+          <li>Designed an inventory/resource system; reduced memory usage by ~25% and query time by ~30%.</li>
+          <li>Worked cross-functionally to improve playtest satisfaction and iteration efficiency.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="title">Programming</div>
+        <div class="chips">
+          <span class="chip">C++</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span>
+        </div>
+        <ul>
+          <li>Clean, modular system design; profiling-driven optimization.</li>
+          <li>Comfortable with math-heavy graphics and interaction problems.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="title">Graphics / Engine / XR / CV-AI</div>
+        <div class="chips">
+          <span class="chip">UE5</span><span class="chip">Unity</span><span class="chip">OpenGL</span><span class="chip">Vulkan</span><span class="chip">HLSL</span>
+          <span class="chip">OpenXR</span><span class="chip">Meta SDK</span>
+          <span class="chip">PyTorch</span><span class="chip">OpenCV</span>
+        </div>
+        <ul>
+          <li>PBR pipelines, BRDF modeling, real-time rendering integration.</li>
+          <li>XR interaction systems, tracking-driven avatars, and 3D ML pipelines.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="two">
+      <div class="card">
+        <div class="title">Get in touch</div>
+        <div class="meta">For China-based recruiters, WeChat is preferred.</div>
+        <ul>
+          <li>Phone: 184-6332-5253</li>
+          <li>Email: <a href="mailto:zihanwang7@outlook.com">zihanwang7@outlook.com</a></li>
+          <li>GitHub: <a href="https://github.com/ZihanWG" target="_blank" rel="noopener">github.com/ZihanWG</a></li>
+          <li>Portfolio: <a href="https://zihanwg.github.io/ZihanW.github.io/" target="_blank" rel="noopener">zihanwg.github.io/ZihanW.github.io</a></li>
+          <li>Resume PDF: <a href="assets/resume.pdf" target="_blank" rel="noopener">assets/resume.pdf</a></li>
+        </ul>
+        <div class="small">Suggested WeChat note: <b>Job - Graphics/Engine/XR - Zihan Wang</b></div>
+      </div>
+
+      <div class="card">
+        <div class="title">WeChat QR</div>
+        <div class="meta">Click to zoom for easy scanning</div>
+        <div style="margin-top:10px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+          <img src="assets/wechat.jpg" alt="WeChat QR" class="qrimg qr-click" title="Click to zoom" style="cursor:zoom-in;" />
+          <div class="small">Path: <span class="mono">assets/wechat.jpg</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    © <span id="y"></span> Zihan Wang · Built for GitHub Pages
+  </div>
+
+  <!-- QR Modal -->
+  <div id="qrModal" style="
+    position:fixed; inset:0; background:rgba(0,0,0,.75);
+    display:none; align-items:center; justify-content:center;
+    z-index:9999; cursor:zoom-out;">
+    <img id="qrModalImg" src="" alt="WeChat QR Large"
+      style="max-width:90%; max-height:90%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.6);" />
+  </div>
+
+</div>
+
+<script>
+  // Footer year
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Project filter
+  const buttons = Array.from(document.querySelectorAll('.fbtn'));
+  const projects = Array.from(document.querySelectorAll('.project'));
+  function setFilter(tag){
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.filter === tag));
+    projects.forEach(p => {
+      const tags = p.dataset.tags.split(',').map(s=>s.trim());
+      const show = (tag === 'all') || tags.includes(tag);
+      p.style.display = show ? 'block' : 'none';
+    });
+  }
+  buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
+
+  // WeChat QR click to zoom
+  const qr = document.querySelector('.qr-click');
+  const modal = document.getElementById('qrModal');
+  const modalImg = document.getElementById('qrModalImg');
+  if(qr){
+    qr.addEventListener('click', () => {
+      modalImg.src = qr.src;
+      modal.style.display = 'flex';
+    });
+  }
+  modal.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+</script>
+</body>
+</html>
