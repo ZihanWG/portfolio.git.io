@@ -442,7 +442,6 @@
           </div>
           <!-- Result Images -->
           <div class="project-gallery">
-            <img src="assets/proughness_row.png" class="project-img qr-click" alt="Result" />
             <img src="assets/cornell_box.png" class="project-img qr-click" alt="Result" />
           </div>
         </div>
@@ -494,12 +493,15 @@
           <div class="links">
             <a class="btn" href="https://github.com/ZihanWG/UncannyValleyVR" target="_blank" rel="noopener">Repo</a>
             <a class="btn" href="https://youtu.be/_U8bSjyNTWg" target="_blank" rel="noopener">Video</a>
-            <a class="btn" href="https://zihanwportfolio.wordpress.com/2024/11/30/uncanny-valley-exploration-in-vr/"
-              target="_blank" rel="noopener">Write-up</a>
           </div>
           <!-- Result Images -->
           <div class="project-gallery">
-            <img src="assets/textures.gif" class="project-img qr-click" alt="Result" />
+            <div
+              style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
+              <img src="assets/eye motion.gif" />
+              <img src="assets/facial tracking.gif" />
+              <img src="assets/textures.gif" />
+            </div>
           </div>
         </div>
 
@@ -671,17 +673,16 @@
     }
     buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
 
-    // Image click to zoom (works for both QR and project images)
-    const clickableImages = document.querySelectorAll('.qr-click');
+    // WeChat QR click to zoom
+    const qr = document.querySelector('.qr-click');
     const modal = document.getElementById('qrModal');
     const modalImg = document.getElementById('qrModalImg');
-
-    clickableImages.forEach(img => {
-      img.addEventListener('click', () => {
-        modalImg.src = img.src;
+    if (qr) {
+      qr.addEventListener('click', () => {
+        modalImg.src = qr.src;
         modal.style.display = 'flex';
       });
-    });
+    }
     modal.addEventListener('click', () => {
       modal.style.display = 'none';
     });
