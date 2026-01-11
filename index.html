@@ -334,14 +334,19 @@
     }
 
     .project-img {
-      height: 100px;
-      /* Square */
-      width: 100px;
+      height: 120px;
+      width: auto;
       border-radius: 8px;
       border: 1px solid var(--line);
       object-fit: cover;
       flex-shrink: 0;
       background: rgba(0, 0, 0, 0.2);
+      cursor: zoom-in;
+      transition: transform 0.2s;
+    }
+
+    .project-img:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -438,9 +443,8 @@
             <!-- Replace src with your actual image paths -->
             <!-- <img src="assets/project1_demo.jpg" class="project-img" alt="Project Demo 1" /> -->
             <!-- <img src="assets/project1_result.jpg" class="project-img" alt="Project Result 2" /> -->
-            <div
-              style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
-              <img src="assets/cornell_box.png" />
+            <div class="project-gallery">
+              <img src="assets/cornell_box.png" class="project-img qr-click" alt="Cornell Box" />
             </div>
           </div>
         </div>
@@ -497,9 +501,8 @@
           </div>
           <!-- Result Images -->
           <div class="project-gallery">
-            <div
-              style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
-              <img src="assets/texture.gif" />
+            <div class="project-gallery">
+              <img src="assets/texture.gif" class="project-img qr-click" alt="Texture GIF" />
             </div>
           </div>
         </div>
@@ -662,16 +665,17 @@
     }
     buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
 
-    // WeChat QR click to zoom
-    const qr = document.querySelector('.qr-click');
+    // Image click to zoom
+    const clickableImages = document.querySelectorAll('.qr-click');
     const modal = document.getElementById('qrModal');
     const modalImg = document.getElementById('qrModalImg');
-    if (qr) {
-      qr.addEventListener('click', () => {
-        modalImg.src = qr.src;
+
+    clickableImages.forEach(img => {
+      img.addEventListener('click', () => {
+        modalImg.src = img.src;
         modal.style.display = 'flex';
       });
-    }
+    });
     modal.addEventListener('click', () => {
       modal.style.display = 'none';
     });
