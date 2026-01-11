@@ -334,21 +334,14 @@
     }
 
     .project-img {
-      height: 120px;
-      /* Increased size */
-      width: 120px;
+      height: 100px;
+      /* Square */
+      width: 100px;
       border-radius: 8px;
       border: 1px solid var(--line);
       object-fit: cover;
       flex-shrink: 0;
       background: rgba(0, 0, 0, 0.2);
-      cursor: zoom-in;
-      /* Indicate clickable */
-      transition: transform 0.2s;
-    }
-
-    .project-img:hover {
-      transform: scale(1.05);
     }
   </style>
 </head>
@@ -442,7 +435,13 @@
           </div>
           <!-- Result Images -->
           <div class="project-gallery">
-            <img src="assets/cornell_box.png" class="project-img qr-click" alt="Result" />
+            <!-- Replace src with your actual image paths -->
+            <!-- <img src="assets/project1_demo.jpg" class="project-img" alt="Project Demo 1" /> -->
+            <!-- <img src="assets/project1_result.jpg" class="project-img" alt="Project Result 2" /> -->
+            <div
+              style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
+              <img src="assets/cornell_box.png" />
+            </div>
           </div>
         </div>
 
@@ -493,11 +492,16 @@
           <div class="links">
             <a class="btn" href="https://github.com/ZihanWG/UncannyValleyVR" target="_blank" rel="noopener">Repo</a>
             <a class="btn" href="https://youtu.be/_U8bSjyNTWg" target="_blank" rel="noopener">Video</a>
+            <a class="btn" href="https://zihanwportfolio.wordpress.com/2024/11/30/uncanny-valley-exploration-in-vr/"
+              target="_blank" rel="noopener">Write-up</a>
           </div>
           <!-- Result Images -->
           <div class="project-gallery">
             <div
               style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
+
+              <img src="assets/eye motion.gif" />
+              <img src="assets/facial tracking.gif" />
               <img src="assets/textures.gif" />
             </div>
           </div>
