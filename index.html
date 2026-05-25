@@ -377,13 +377,13 @@
       <div class="subtitle">
         M.S. Computer Science @ RIT. Former NetEase VR (Unity/Quest) and Alibaba (Unity) intern. Current VR Developer at
         RIT MAGIC Spell Studios.<br />
-        Interests: real-time rendering, graphics/engine systems, XR interaction, and CV/AI/ML for 3D + virtual humans.
+        Focus: real-time rendering, graphics/engine architecture, Vulkan/OpenGL pipelines, XR interaction, and CV/AI/ML for 3D + virtual humans.
       </div>
 
       <div class="badges">
         <span class="badge">C++ / C#</span>
         <span class="badge">UE5 / Unity</span>
-        <span class="badge">OpenGL / Vulkan / HLSL</span>
+        <span class="badge">Vulkan / OpenGL / HLSL / GLSL</span>
         <span class="badge">OpenXR / Meta SDK</span>
         <span class="badge">PyTorch / OpenCV</span>
       </div>
@@ -414,38 +414,28 @@
 
       <div class="grid">
 
-        <!-- Kulla-Conty BRDF -->
-        <div class="card project" data-tags="graphics,engine">
+        <!-- Vulkan Engine -->
+        <div class="card project" data-tags="engine,graphics">
           <div class="cardhead">
             <div>
-              <div class="title">Kulla–Conty BRDF Integration in UE5</div>
-              <div class="meta">Role: Rendering Developer (Core Implementer) · C++ / HLSL / Unreal Engine 5</div>
+              <div class="title">Vulkan Engine</div>
+              <div class="meta">Role: Graphics / Engine Developer · C++ / Vulkan / GLSL</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">Monte Carlo GGX</span><span class="chip">BRDF LUT</span><span class="chip">Energy
-              Compensation</span><span class="chip">UE5 Materials</span>
+            <span class="chip">Vulkan</span><span class="chip">Dynamic Rendering</span><span class="chip">PBR</span><span
+              class="chip">Shadow Mapping</span><span class="chip">GPU-driven Debug UI</span>
           </div>
           <ul>
-            <li>Built an offline Monte Carlo integrator to generate BRDF LUTs for multi-scattering energy compensation.
-            </li>
-            <li>Integrated custom HLSL nodes in UE5 to achieve energy-conserving specular shading for rough materials.
-            </li>
+            <li>Built a modern Vulkan renderer with explicit command recording, swapchain management, descriptor layouts, image transitions, and Sync2-based synchronization.</li>
+            <li>Implemented real-time rendering features including PBR shading, shadow mapping with manual PCF, mipmap generation, normal mapping, and scene hierarchy/debug inspection tools.</li>
+            <li>Designed the project as an engine-learning codebase focused on low-level graphics architecture, GPU resource lifetime, and render pipeline extensibility.</li>
           </ul>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/KullaContyBRDF" target="_blank" rel="noopener">Repo</a>
-            <a class="btn"
-              href="https://zihanwportfolio.wordpress.com/2025/05/06/integrating-kulla-conty-brdf-for-real-time-pbr-in-ue5/"
-              target="_blank" rel="noopener">Write-up</a>
+            <a class="btn" href="https://github.com/ZihanWG/VulkanEngine" target="_blank" rel="noopener">Repo</a>
           </div>
-          <!-- Result Images -->
           <div class="project-gallery">
-            <!-- Replace src with your actual image paths -->
-            <!-- <img src="assets/project1_demo.jpg" class="project-img" alt="Project Demo 1" /> -->
-            <!-- <img src="assets/project1_result.jpg" class="project-img" alt="Project Result 2" /> -->
-            <div class="project-gallery">
-              <img src="assets/cornell_box.png" class="project-img qr-click" alt="Cornell Box" />
-            </div>
+            <img src="assets/vulkan_engine.png" class="project-img qr-click" alt="Vulkan Engine Screenshot" />
           </div>
         </div>
 
@@ -453,57 +443,52 @@
         <div class="card project" data-tags="engine,graphics">
           <div class="cardhead">
             <div>
-              <div class="title">C++ OpenGL Rendering Engine (cglEngine)</div>
-              <div class="meta">Role: Engine Developer / Architecture · C++ / OpenGL</div>
+              <div class="title">OpenGL Rendering Engine (CGRenderEngine)</div>
+              <div class="meta">Role: Engine Developer / Rendering Programmer · C++ / OpenGL / GLSL</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">PBR</span><span class="chip">Shadows</span><span class="chip">HDR</span><span
-              class="chip">Post-processing</span>
+            <span class="chip">OpenGL</span><span class="chip">PBR</span><span class="chip">Shadow Mapping</span><span
+              class="chip">HDR</span><span class="chip">Post-processing</span>
           </div>
           <ul>
-            <li>Built a modular real-time rendering pipeline (PBR, shadows, HDR, post-processing).</li>
-            <li>Extended with ray tracing & super-sampling modules for real-time vs offline comparison.</li>
+            <li>Developed a modular real-time rendering engine covering scene setup, shader/material management, lighting, shadow mapping, HDR rendering, and post-processing.</li>
+            <li>Implemented graphics assignments and engine modules as a practical foundation for rendering pipeline design, debugging, and performance-oriented feature integration.</li>
+            <li>Extended the codebase with ray tracing and super-sampling experiments to compare real-time rasterization and offline rendering techniques.</li>
           </ul>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/cglEngine" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/ZihanWG/CGRenderEngine" target="_blank" rel="noopener">Repo</a>
           </div>
-          <!-- Result Images -->
           <div class="project-gallery">
-            <div
-              style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
-              <img src="assets/assn6_shadowRay.png" class="project-img qr-click" alt="Shadow Ray" />
-            </div>
+            <img src="assets/assn6_shadowRay.png" class="project-img qr-click" alt="OpenGL Engine Shadow Ray Result" />
           </div>
         </div>
 
-        <!-- Uncanny Valley VR -->
-        <div class="card project" data-tags="xr">
+        <!-- Kulla-Conty BRDF -->
+        <div class="card project" data-tags="graphics,engine">
           <div class="cardhead">
             <div>
-              <div class="title">Uncanny Valley VR Experimental System</div>
-              <div class="meta">Role: VR Tech Lead · Unity / Meta SDK / Face Tracking</div>
+              <div class="title">Kulla–Conty BRDF Integration in UE5</div>
+              <div class="meta">Role: Rendering Developer · C++ / HLSL / Unreal Engine 5</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">Facial Tracking</span><span class="chip">Expression Mapping</span><span class="chip">Eye
-              Micro-motion</span>
+            <span class="chip">Monte Carlo GGX</span><span class="chip">BRDF LUT</span><span class="chip">Energy Compensation</span><span
+              class="chip">UE5 Materials</span>
           </div>
           <ul>
-            <li>Built facial tracking-driven expression mapping with smoothing/synchronization.</li>
-            <li>Reduced negative user feedback by ~35% through iterative realism tuning.</li>
+            <li>Implemented a Kulla–Conty multi-scattering BRDF workflow to compensate energy loss in rough specular materials.</li>
+            <li>Built an offline Monte Carlo integration pipeline to generate lookup tables for real-time material evaluation.</li>
+            <li>Integrated the BRDF approximation into UE5 material/shader workflows and compared visual behavior against baseline single-scattering shading.</li>
           </ul>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/UncannyValleyVR" target="_blank" rel="noopener">Repo</a>
-            <a class="btn" href="https://youtu.be/_U8bSjyNTWg" target="_blank" rel="noopener">Video</a>
-            <a class="btn" href="https://zihanwportfolio.wordpress.com/2024/11/30/uncanny-valley-exploration-in-vr/"
+            <a class="btn" href="https://github.com/ZihanWG/KullaContyBRDF" target="_blank" rel="noopener">Repo</a>
+            <a class="btn"
+              href="https://zihanwportfolio.wordpress.com/2025/05/06/integrating-kulla-conty-brdf-for-real-time-pbr-in-ue5/"
               target="_blank" rel="noopener">Write-up</a>
           </div>
-          <!-- Result Images -->
           <div class="project-gallery">
-            <div class="project-gallery">
-              <img src="assets/texture.gif" class="project-img qr-click" alt="Texture GIF" />
-            </div>
+            <img src="assets/cornell_box.png" class="project-img qr-click" alt="Kulla Conty BRDF Cornell Box Result" />
           </div>
         </div>
 
@@ -512,29 +497,52 @@
           <div class="cardhead">
             <div>
               <div class="title">Real-time 3D Style Transfer (3DGS)</div>
-              <div class="meta">Role: Project Lead · PyTorch / 3D Gaussian Splatting</div>
+              <div class="meta">Role: Project Lead · PyTorch / 3D Gaussian Splatting / Computer Vision</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">LPIPS</span><span class="chip">Reprojection Consistency</span><span class="chip">Temporal
-              Stability</span>
+            <span class="chip">3D Gaussian Splatting</span><span class="chip">LPIPS</span><span class="chip">Reprojection Consistency</span><span
+              class="chip">Temporal Stability</span>
           </div>
           <ul>
-            <li>Designed a stability-first pipeline to reduce temporal flickering in real-time 3D stylization.</li>
-            <li>Achieved ~4% lower warping error on NeRF-Synthetic scenes with improved coherence.</li>
+            <li>Designed a stability-first 3D style transfer pipeline for Gaussian Splatting scenes, focusing on temporal coherence during real-time view changes.</li>
+            <li>Used perceptual and reprojection-based losses to reduce flickering and improve cross-view consistency in stylized 3D assets.</li>
+            <li>Evaluated results on NeRF-Synthetic-style scenes and reported lower warping error with improved visual coherence.</li>
           </ul>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/3DStyle_Transfer_3DGS" target="_blank"
-              rel="noopener">Repo</a>
-            <a class="btn" href="assets/Real_Time_3D_Asset_Style_Transfer.pdf" target="_blank" rel="noopener">Write-up
-              (PDF)</a>
+            <a class="btn" href="https://github.com/ZihanWG/3DStyle_Transfer_3DGS" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="assets/Real_Time_3D_Asset_Style_Transfer.pdf" target="_blank" rel="noopener">Write-up (PDF)</a>
           </div>
-          <!-- Result Images -->
           <div class="project-gallery">
-            <div
-              style="display:flex; align-items:center; justify-content:center; width:100px; height:100px; border:1px dashed var(--muted); border-radius:8px; color:var(--muted); font-size:12px; flex-shrink:0;">
-              <img src="assets/comparison_hotdog.png" class="project-img qr-click" alt="Comparison Hotdog" />
+            <img src="assets/comparison_hotdog.png" class="project-img qr-click" alt="3DGS Style Transfer Comparison" />
+          </div>
+        </div>
+
+        <!-- Uncanny Valley VR -->
+        <div class="card project" data-tags="xr,cvai">
+          <div class="cardhead">
+            <div>
+              <div class="title">Uncanny Valley VR Experimental System</div>
+              <div class="meta">Role: VR Tech Lead · Unity / Meta SDK / Quest Pro Face Tracking</div>
             </div>
+          </div>
+          <div class="chips">
+            <span class="chip">VR</span><span class="chip">Facial Tracking</span><span class="chip">Expression Mapping</span><span
+              class="chip">Eye Micro-motion</span><span class="chip">User Study</span>
+          </div>
+          <ul>
+            <li>Built a VR experimental system for studying uncanny valley perception through avatar facial tracking, expression mapping, eye motion, and realism/noise variations.</li>
+            <li>Implemented tracking-driven facial animation with smoothing and synchronization to compare natural expression mapping against less stable avatar behavior.</li>
+            <li>Designed interaction flow and evaluation conditions to help users identify which visual and behavioral factors increase or reduce uncanny perception.</li>
+          </ul>
+          <div class="links">
+            <a class="btn" href="https://github.com/ZihanWG/UncannyValleyVR" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://youtu.be/_U8bSjyNTWg" target="_blank" rel="noopener">Video</a>
+            <a class="btn" href="https://zihanwportfolio.wordpress.com/2024/11/30/uncanny-valley-exploration-in-vr/" target="_blank"
+              rel="noopener">Write-up</a>
+          </div>
+          <div class="project-gallery">
+            <img src="assets/texture.gif" class="project-img qr-click" alt="Uncanny Valley VR Texture Experiment" />
           </div>
         </div>
 
@@ -604,7 +612,7 @@
             <span class="chip">PyTorch</span><span class="chip">OpenCV</span>
           </div>
           <ul>
-            <li>PBR pipelines, BRDF modeling, real-time rendering integration.</li>
+            <li>Vulkan/OpenGL rendering architecture, PBR pipelines, BRDF modeling, and real-time rendering integration.</li>
             <li>XR interaction systems, tracking-driven avatars, and 3D ML pipelines.</li>
           </ul>
         </div>
@@ -638,7 +646,7 @@
     position:fixed; inset:0; background:rgba(0,0,0,.75);
     display:none; align-items:center; justify-content:center;
     z-index:9999; cursor:zoom-out;">
-      <img id="qrModalImg" src="" alt="WeChat QR Large"
+      <img id="qrModalImg" src="" alt="Project Image Large"
         style="max-width:90%; max-height:90%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.6);" />
     </div>
 
