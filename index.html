@@ -386,6 +386,25 @@
       margin-top: 6px;
     }
 
+    .project-wide-main,
+    .project-wide-side {
+      min-width: 0;
+    }
+
+    .project-wide-side .project-gallery {
+      margin-top: 0;
+    }
+
+    @media(min-width:860px) {
+      .project-wide {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(340px, .85fr);
+        gap: 18px;
+        align-items: start;
+      }
+    }
+
     .skill-matrix {
       display: grid;
       grid-template-columns: 1fr;
@@ -581,44 +600,48 @@
       <div class="grid">
 
         <!-- Vulkan Engine -->
-        <div class="card project" data-tags="engine,graphics">
-          <div class="cardhead">
-            <div>
-              <div class="title">Vulkan Engine Prototype / Real-Time Renderer</div>
-              <div class="meta">Role: Engine Developer | Vulkan 1.3, Resource Management, Dynamic Rendering, Sync2, Render Graph, GPU Profiling</div>
+        <div class="card project project-wide" data-tags="engine,graphics">
+          <div class="project-wide-main">
+            <div class="cardhead">
+              <div>
+                <div class="title">Vulkan Engine Prototype / Real-Time Renderer</div>
+                <div class="meta">Role: Engine Developer | Vulkan 1.3, Resource Management, Dynamic Rendering, Sync2, Render Graph, GPU Profiling</div>
+              </div>
+            </div>
+            <div class="chips">
+              <span class="chip">C++20</span><span class="chip">Vulkan 1.3</span><span class="chip">GLSL</span><span
+                class="chip">Render Graph</span><span class="chip">PBR / IBL</span><span class="chip">GPU Profiling</span>
+            </div>
+            <ul>
+              <li>Independently built a Vulkan 1.3 engine prototype covering core explicit-API systems including the swapchain, command buffers, descriptors, pipelines, Dynamic Rendering, and Synchronization2.</li>
+              <li>Implemented PBR materials, normal mapping, shadow mapping, custom PCF, HDR, Bloom, tone mapping, IBL prefiltering, and a BRDF LUT as a complete real-time rendering pipeline.</li>
+              <li>Designed a Render Graph layer that organizes rendering through declared pass reads and writes while centralizing image layout transitions, transient render targets, resource lifecycles, and barrier generation.</li>
+              <li>Added GPU timestamps, a scene hierarchy, material parameter inspection, and render-target viewers to diagnose rendering errors, profile pass timing, and validate resource states.</li>
+            </ul>
+            <div class="links">
+              <a class="btn" href="https://github.com/ZihanWG/VulkanEngine" target="_blank" rel="noopener">Repository / README</a>
+            </div>
+            <div class="project-block">
+              <div class="block-title">Technical Deep-Dive Topics</div>
+              <ul>
+                <li>Synchronization2 / Image Layout Transitions / Barrier Management</li>
+                <li>Render Graph resource declarations, transient allocation, and debug visualization</li>
+                <li>PBR + IBL pipeline, BRDF LUT, HDR / Bloom / Tone Mapping</li>
+              </ul>
             </div>
           </div>
-          <div class="chips">
-            <span class="chip">C++20</span><span class="chip">Vulkan 1.3</span><span class="chip">GLSL</span><span
-              class="chip">Render Graph</span><span class="chip">PBR / IBL</span><span class="chip">GPU Profiling</span>
-          </div>
-          <ul>
-            <li>Independently built a Vulkan 1.3 engine prototype covering core explicit-API systems including the swapchain, command buffers, descriptors, pipelines, Dynamic Rendering, and Synchronization2.</li>
-            <li>Implemented PBR materials, normal mapping, shadow mapping, custom PCF, HDR, Bloom, tone mapping, IBL prefiltering, and a BRDF LUT as a complete real-time rendering pipeline.</li>
-            <li>Designed a Render Graph layer that organizes rendering through declared pass reads and writes while centralizing image layout transitions, transient render targets, resource lifecycles, and barrier generation.</li>
-            <li>Added GPU timestamps, a scene hierarchy, material parameter inspection, and render-target viewers to diagnose rendering errors, profile pass timing, and validate resource states.</li>
-          </ul>
-          <div class="project-block">
-            <div class="block-title">Engineering Challenges</div>
-            <ul>
-              <li>Coordinating pipeline stages, access masks, image layouts, and per-frame resource states under Vulkan's explicit synchronization model.</li>
-              <li>Keeping descriptor, buffer, image, and transient render-target lifetimes aligned with frame resources and Render Graph dependencies.</li>
-              <li>Defining clear pass boundaries across PBR, shadows, post-processing, and debug views so the renderer remains maintainable as features grow.</li>
-            </ul>
-          </div>
-          <div class="project-block">
-            <div class="block-title">Technical Deep-Dive Topics</div>
-            <ul>
-              <li>Synchronization2 / Image Layout Transitions / Barrier Management</li>
-              <li>Render Graph resource declarations, transient allocation, and debug visualization</li>
-              <li>PBR + IBL pipeline, BRDF LUT, HDR / Bloom / Tone Mapping</li>
-            </ul>
-          </div>
-          <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/VulkanEngine" target="_blank" rel="noopener">Repository / README</a>
-          </div>
-          <div class="project-gallery">
-            <img src="assets/vulkan_engine_portfolio_latest.png" class="project-img featured" alt="Vulkan Engine Screenshot" />
+          <div class="project-wide-side">
+            <div class="project-gallery">
+              <img src="assets/vulkan_engine_portfolio_latest.png" class="project-img featured" alt="Vulkan Engine Screenshot" />
+            </div>
+            <div class="project-block">
+              <div class="block-title">Engineering Challenges</div>
+              <ul>
+                <li>Coordinating pipeline stages, access masks, image layouts, and per-frame resource states under Vulkan's explicit synchronization model.</li>
+                <li>Keeping descriptor, buffer, image, and transient render-target lifetimes aligned with frame resources and Render Graph dependencies.</li>
+                <li>Defining clear pass boundaries across PBR, shadows, post-processing, and debug views so the renderer remains maintainable as features grow.</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -941,7 +964,7 @@
       projects.forEach(p => {
         const tags = p.dataset.tags.split(',').map(s => s.trim());
         const show = (tag === 'all') || tags.includes(tag);
-        p.style.display = show ? 'block' : 'none';
+        p.style.display = show ? '' : 'none';
       });
     }
     buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
