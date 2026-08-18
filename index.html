@@ -4,10 +4,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zihan Wang | Graphics / Engine / XR / CV-AI Portfolio</title>
-  <meta name="description"
-    content="Zihan Wang (王滋涵) — Graphics Rendering, Engine, Game Dev, XR, Computer Vision & AI. UE5 BRDF, OpenGL engine, VR Uncanny Valley, 3DGS style transfer." />
-
+  <title>Zihan Wang | Engine Development &amp; Real-Time Rendering Portfolio</title>
+  <meta name="description" content="Zihan Wang — RIT Computer Science M.S. — Engine development and real-time rendering portfolio featuring C++, Vulkan, OpenGL, Render Graph, resource management, GPU profiling, UE5 BRDF, and XR systems." />
   <style>
     :root {
       --bg: #0b0d12;
@@ -95,7 +93,7 @@
     .hero h1 {
       margin: 0;
       font-size: 30px;
-      letter-spacing: .2px
+      letter-spacing: .3px
     }
 
     .subtitle {
@@ -141,7 +139,7 @@
     }
 
     .btn.primary {
-      border-color: rgba(122, 162, 255, .55);
+      border-color: rgba(122, 162, 255, .5);
       background: rgba(122, 162, 255, .16)
     }
 
@@ -263,7 +261,7 @@
 
     .fbtn.active {
       color: var(--text);
-      border-color: rgba(122, 162, 255, .55);
+      border-color: rgba(122, 162, 255, .5);
       background: rgba(122, 162, 255, .12)
     }
 
@@ -286,6 +284,15 @@
       border: 1px solid var(--line);
       background: #0b0d12;
       object-fit: cover;
+      cursor: zoom-in;
+    }
+
+    .footer {
+      margin-top: 30px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px
     }
 
     .note {
@@ -303,12 +310,103 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    .footer {
-      margin-top: 30px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    @media(min-width:860px) {
+      .hero-grid {
+        grid-template-columns: 1.15fr .85fr;
+      }
+    }
+
+    .signal-box {
+      border: 1px solid rgba(122, 162, 255, .22);
+      background: rgba(122, 162, 255, .07);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .signal-box strong {
+      color: #edf3ff;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    @media(min-width:720px) {
+      .kpi-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .kpi {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, .025);
+      border-radius: 14px;
+      padding: 12px;
+    }
+
+    .kpi .num {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--accent2);
+      margin-bottom: 4px;
+    }
+
+    .kpi .label {
       color: var(--muted);
-      font-size: 12px
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .project-block {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255, 255, 255, .06);
+      background: rgba(255, 255, 255, .025);
+      border-radius: 12px;
+    }
+
+    .project-block .block-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #dfe7ff;
+      margin-bottom: 6px;
+    }
+
+    .project-block ul {
+      margin-top: 6px;
+    }
+
+    .skill-matrix {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media(min-width:860px) {
+      .skill-matrix {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .skill-col {
+      border: 1px solid var(--line);
+      background: rgba(18, 22, 35, .62);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .skill-col .title {
+      margin-bottom: 8px;
     }
 
     /* Project Gallery Styles */
@@ -322,6 +420,7 @@
       scrollbar-width: thin;
       /* Firefox */
       scrollbar-color: var(--line) transparent;
+      width: 100%;
     }
 
     .project-gallery::-webkit-scrollbar {
@@ -334,11 +433,12 @@
     }
 
     .project-img {
-      height: 120px;
-      width: auto;
+      width: 100%;
+      height: 220px;
       border-radius: 8px;
       border: 1px solid var(--line);
       object-fit: cover;
+      object-position: center;
       flex-shrink: 0;
       background: rgba(0, 0, 0, 0.2);
       cursor: zoom-in;
@@ -346,7 +446,47 @@
     }
 
     .project-img:hover {
-      transform: scale(1.05);
+      transform: scale(1.01);
+    }
+
+    .project-img.featured {
+      width: 100%;
+      height: 220px;
+      aspect-ratio: auto;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .project-img.contain {
+      object-fit: contain;
+      object-position: center;
+      background: #05070c;
+    }
+
+    .img-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, .78);
+      z-index: 9999;
+      cursor: zoom-out;
+    }
+
+    .img-modal.open {
+      display: flex;
+    }
+
+    .img-modal img {
+      max-width: 92vw;
+      max-height: 90vh;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, .65);
+      background: #05070c;
+      object-fit: contain;
     }
   </style>
 </head>
@@ -359,57 +499,83 @@
       <div class="brand">
         <div class="dot"></div>
         <div>
-          <div style="font-weight:700">Zihan Wang · Portfolio</div>
-          <div class="small">Graphics / Engine / Game / XR / CV-AI</div>
+          <div style="font-weight:700">Zihan Wang · Engine Development Portfolio</div>
+          <div class="small">Engine Development / Real-Time Rendering / Graphics Systems</div>
         </div>
       </div>
       <nav class="nav">
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
+        <a href="#projects">Featured Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#deepdives">Deep Dives</a>
+        <a href="#experience">Experience</a>
+        <a href="#resume">Résumé</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
 
     <!-- Hero -->
     <div class="hero">
-      <h1>Zihan Wang <span class="small">(王滋涵)</span></h1>
+      <h1>Zihan Wang</h1>
       <div class="subtitle">
-        M.S. Computer Science @ RIT. Former NetEase VR (Unity/Quest) and Alibaba (Unity) intern. Current VR Developer at
-        RIT MAGIC Spell Studios.<br />
-        Focus: real-time rendering, graphics/engine architecture, Vulkan/OpenGL pipelines, XR interaction, and CV/AI/ML for 3D + virtual humans.
+        RIT Computer Science M.S. | Xiamen University Digital Media Technology B.Eng. | NetEase VR &amp; Alibaba Unity Internships | VR Developer at RIT MAGIC Spell Studios<br />
+        <b>Target roles:</b> Engine Developer / Graphics Rendering Engineer / Low-Level Game Client Developer.<br />
+        <b>Technical focus:</b> C++ graphics systems, Vulkan / OpenGL pipelines, Render Graphs, resource lifecycles, GPU debugging, and performance analysis.<br />
+        <b>Additional areas:</b> XR real-time interaction systems, UE5 rendering modules, and 3D AI / neural rendering.
       </div>
 
       <div class="badges">
-        <span class="badge">C++ / C#</span>
-        <span class="badge">UE5 / Unity</span>
-        <span class="badge">Vulkan / OpenGL / HLSL / GLSL</span>
+        <span class="badge">C++ Engine Development</span>
+        <span class="badge">Vulkan / OpenGL</span>
+        <span class="badge">Render Graph / Resource Management</span>
+        <span class="badge">GPU Profiling / Debug Tools</span>
+        <span class="badge">Unreal Engine 5 / Unity</span>
         <span class="badge">OpenXR / Meta SDK</span>
         <span class="badge">PyTorch / OpenCV</span>
       </div>
 
       <div class="cta">
-        <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
-        <a class="btn" href="https://github.com/ZihanWG" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="mailto:zihanwang7@outlook.com">Email</a>
+        <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">View Résumé PDF</a>
+        <a class="btn" href="https://github.com/ZihanWG" target="_blank" rel="noopener">GitHub Projects</a>
+        <a class="btn" href="#projects">View Featured Projects</a>
+        <a class="btn" href="mailto:zihanwang7@outlook.com">Email Me</a>
       </div>
 
-      <div class="note">
-        <b>Quick scan:</b> start from <span class="mono">Selected Projects</span> → open GitHub README for
-        implementation → download resume if needed.
+      <div class="hero-grid">
+        <div class="signal-box">
+          <strong>Role focus:</strong> Graphics rendering, engine development, low-level game client, and XR real-time systems. This portfolio goes beyond isolated demos to demonstrate explainable, extensible graphics systems built around rendering pipelines, resource management, synchronization, debugging tools, and performance analysis.
+        </div>
+        <div class="signal-box">
+          <strong>Suggested path:</strong> Vulkan Engine → OpenGL Engine → UE5 BRDF → Technical Deep Dives → Résumé PDF. Key discussion topics include Vulkan synchronization, Render Graphs, PBR/IBL, GPU profiling, and stable real-time XR feedback.
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi">
+          <div class="num">C++ / Vulkan</div>
+          <div class="label">Low-level graphics APIs, explicit synchronization, resource lifecycles, and real-time rendering frameworks.</div>
+        </div>
+        <div class="kpi">
+          <div class="num">Engine Systems</div>
+          <div class="label">Render Graphs, pass dependencies, material / shader / texture management, and debugging tools.</div>
+        </div>
+        <div class="kpi">
+          <div class="num">Profiling</div>
+          <div class="label">GPU timestamps, RenderDoc, validation layers, and Unity Profiler for targeted diagnosis.</div>
+        </div>
       </div>
     </div>
 
+
     <!-- Projects -->
     <section id="projects">
-      <h2>Selected Projects</h2>
+      <h2>Featured Projects | Graphics Rendering &amp; Engine Development</h2>
 
       <div class="filters">
         <div class="fbtn active" data-filter="all">All</div>
-        <div class="fbtn" data-filter="graphics">Graphics</div>
         <div class="fbtn" data-filter="engine">Engine</div>
-        <div class="fbtn" data-filter="xr">XR</div>
-        <div class="fbtn" data-filter="cvai">CV / AI / ML</div>
+        <div class="fbtn" data-filter="graphics">Graphics</div>
+        <div class="fbtn" data-filter="xr">XR/VR</div>
+        <div class="fbtn" data-filter="ai">AI / Vision</div>
       </div>
 
       <div class="grid">
@@ -418,24 +584,41 @@
         <div class="card project" data-tags="engine,graphics">
           <div class="cardhead">
             <div>
-              <div class="title">Vulkan Engine</div>
-              <div class="meta">Role: Graphics / Engine Developer · C++ / Vulkan / GLSL</div>
+              <div class="title">Vulkan Engine Prototype / Real-Time Renderer</div>
+              <div class="meta">Role: Engine Developer | Vulkan 1.3, Resource Management, Dynamic Rendering, Sync2, Render Graph, GPU Profiling</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">Vulkan</span><span class="chip">Dynamic Rendering</span><span class="chip">PBR</span><span
-              class="chip">Shadow Mapping</span><span class="chip">GPU-driven Debug UI</span>
+            <span class="chip">C++20</span><span class="chip">Vulkan 1.3</span><span class="chip">GLSL</span><span
+              class="chip">Render Graph</span><span class="chip">PBR / IBL</span><span class="chip">GPU Profiling</span>
           </div>
           <ul>
-            <li>Built a modern Vulkan renderer with explicit command recording, swapchain management, descriptor layouts, image transitions, and Sync2-based synchronization.</li>
-            <li>Implemented real-time rendering features including PBR shading, shadow mapping with manual PCF, mipmap generation, normal mapping, and scene hierarchy/debug inspection tools.</li>
-            <li>Designed the project as an engine-learning codebase focused on low-level graphics architecture, GPU resource lifetime, and render pipeline extensibility.</li>
+            <li>Independently built a Vulkan 1.3 engine prototype covering core explicit-API systems including the swapchain, command buffers, descriptors, pipelines, Dynamic Rendering, and Synchronization2.</li>
+            <li>Implemented PBR materials, normal mapping, shadow mapping, custom PCF, HDR, Bloom, tone mapping, IBL prefiltering, and a BRDF LUT as a complete real-time rendering pipeline.</li>
+            <li>Designed a Render Graph layer that organizes rendering through declared pass reads and writes while centralizing image layout transitions, transient render targets, resource lifecycles, and barrier generation.</li>
+            <li>Added GPU timestamps, a scene hierarchy, material parameter inspection, and render-target viewers to diagnose rendering errors, profile pass timing, and validate resource states.</li>
           </ul>
+          <div class="project-block">
+            <div class="block-title">Engineering Challenges</div>
+            <ul>
+              <li>Coordinating pipeline stages, access masks, image layouts, and per-frame resource states under Vulkan's explicit synchronization model.</li>
+              <li>Keeping descriptor, buffer, image, and transient render-target lifetimes aligned with frame resources and Render Graph dependencies.</li>
+              <li>Defining clear pass boundaries across PBR, shadows, post-processing, and debug views so the renderer remains maintainable as features grow.</li>
+            </ul>
+          </div>
+          <div class="project-block">
+            <div class="block-title">Technical Deep-Dive Topics</div>
+            <ul>
+              <li>Synchronization2 / Image Layout Transitions / Barrier Management</li>
+              <li>Render Graph resource declarations, transient allocation, and debug visualization</li>
+              <li>PBR + IBL pipeline, BRDF LUT, HDR / Bloom / Tone Mapping</li>
+            </ul>
+          </div>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/VulkanEngine" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/ZihanWG/VulkanEngine" target="_blank" rel="noopener">Repository / README</a>
           </div>
           <div class="project-gallery">
-            <img src="assets/vulkan_engine.png" class="project-img qr-click" alt="Vulkan Engine Screenshot" />
+            <img src="assets/vulkan_engine_portfolio_latest.png" class="project-img featured" alt="Vulkan Engine Screenshot" />
           </div>
         </div>
 
@@ -443,178 +626,272 @@
         <div class="card project" data-tags="engine,graphics">
           <div class="cardhead">
             <div>
-              <div class="title">OpenGL Rendering Engine (CGRenderEngine)</div>
-              <div class="meta">Role: Engine Developer / Rendering Programmer · C++ / OpenGL / GLSL</div>
+              <div class="title">Modular OpenGL Rendering Engine (CGRenderEngine)</div>
+              <div class="meta">Role: Engine Developer | OpenGL, Shader / Material Systems, Resource Management, PBR, Shadows, HDR, Post-Processing</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">OpenGL</span><span class="chip">PBR</span><span class="chip">Shadow Mapping</span><span
-              class="chip">HDR</span><span class="chip">Post-processing</span>
+            <span class="chip">C++</span><span class="chip">OpenGL</span><span class="chip">GLSL</span><span class="chip">PBR</span><span class="chip">HDR</span>
           </div>
           <ul>
-            <li>Developed a modular real-time rendering engine covering scene setup, shader/material management, lighting, shadow mapping, HDR rendering, and post-processing.</li>
-            <li>Implemented graphics assignments and engine modules as a practical foundation for rendering pipeline design, debugging, and performance-oriented feature integration.</li>
-            <li>Extended the codebase with ray tracing and super-sampling experiments to compare real-time rasterization and offline rendering techniques.</li>
+            <li>Built a modular OpenGL rendering engine spanning scene organization, shader / material management, texture resources, lighting, shadows, HDR, and post-processing.</li>
+            <li>Implemented PBR, shadow mapping, framebuffer post-processing, tone mapping, and foundational debugging workflows, developing an end-to-end understanding from CPU resource submission to GPU output.</li>
+            <li>Extended the project with ray-tracing and supersampling experiments to compare sampling, shadows, reflections, and noise convergence in real-time rasterization and offline rendering.</li>
           </ul>
+          <div class="project-block">
+            <div class="block-title">Engineering Value</div>
+            <ul>
+              <li>Established the module boundaries for shaders, materials, textures, framebuffers, and post-processing that informed the later Vulkan engine.</li>
+              <li>Built a unified understanding of the rendering equation, sampling, shadow quality, and performance costs by comparing real-time rasterization with offline ray tracing.</li>
+            </ul>
+          </div>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/CGRenderEngine" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/ZihanWG/CGRenderEngine" target="_blank" rel="noopener">Code / Repository</a>
           </div>
           <div class="project-gallery">
-            <img src="assets/assn6_shadowRay.png" class="project-img qr-click" alt="OpenGL Engine Shadow Ray Result" />
+            <img src="assets/assn6_shadowRay.png" class="project-img" alt="OpenGL Engine Shadow Ray Result" />
           </div>
         </div>
 
-        <!-- Kulla-Conty BRDF -->
+        <!-- UE5 BRDF -->
         <div class="card project" data-tags="graphics,engine">
           <div class="cardhead">
             <div>
-              <div class="title">Kulla–Conty BRDF Integration in UE5</div>
-              <div class="meta">Role: Rendering Developer · C++ / HLSL / Unreal Engine 5</div>
+              <div class="title">UE5 Rendering Module: Multiple-Scattering BRDF Energy Compensation (Kulla–Conty)</div>
+              <div class="meta">Role: Rendering Module Developer | PBR, Energy Conservation, GGX, Monte Carlo, LUT, HLSL</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">Monte Carlo GGX</span><span class="chip">BRDF LUT</span><span class="chip">Energy Compensation</span><span
-              class="chip">UE5 Materials</span>
+            <span class="chip">C++</span><span class="chip">HLSL</span><span class="chip">Unreal Engine 5</span><span
+              class="chip">PBR</span>
           </div>
           <ul>
-            <li>Implemented a Kulla–Conty multi-scattering BRDF workflow to compensate energy loss in rough specular materials.</li>
-            <li>Built an offline Monte Carlo integration pipeline to generate lookup tables for real-time material evaluation.</li>
-            <li>Integrated the BRDF approximation into UE5 material/shader workflows and compared visual behavior against baseline single-scattering shading.</li>
+            <li>Implemented BRDF energy compensation based on Kulla–Conty multiple scattering to address energy loss in high-roughness GGX materials under a single-scattering model.</li>
+            <li>Built a Monte Carlo integration tool to generate the compensation LUT and integrated it into the UE5 material pipeline through a custom HLSL node.</li>
+            <li>Compared baseline GGX against the compensated model and mapped the practical relationships among Fresnel, NDF, the geometry term, split-sum approximation, and LUT lookup.</li>
           </ul>
+          <div class="project-block">
+            <div class="block-title">Technical Value</div>
+            <ul>
+              <li>Demonstrates the ability to explain a PBR module through the rendering equation, microfacet BRDFs, energy conservation, and real-time lookup optimization—not just its visual result.</li>
+              <li>Supports deeper discussion of Monte Carlo integration, LUT precomputation, split-sum approximation, and UE material-system integration.</li>
+            </ul>
+          </div>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/KullaContyBRDF" target="_blank" rel="noopener">Repo</a>
+            <a class="btn" href="https://github.com/ZihanWG/KullaContyBRDF" target="_blank" rel="noopener">Code / Repository</a>
             <a class="btn"
               href="https://zihanwportfolio.wordpress.com/2025/05/06/integrating-kulla-conty-brdf-for-real-time-pbr-in-ue5/"
-              target="_blank" rel="noopener">Write-up</a>
+              target="_blank" rel="noopener">Technical Write-Up</a>
           </div>
           <div class="project-gallery">
-            <img src="assets/cornell_box.png" class="project-img qr-click" alt="Kulla Conty BRDF Cornell Box Result" />
+            <img src="assets/cornell_box.png" class="project-img" alt="Cornell Box" />
+          </div>
+        </div>
+
+
+        <!-- Uncanny Valley VR -->
+        <div class="card project" data-tags="xr">
+          <div class="cardhead">
+            <div>
+              <div class="title">VR Real-Time Interaction System: Uncanny Valley Experiment</div>
+              <div class="meta">Role: VR Technical Lead | Meta Quest Pro, Face Tracking, Expression Mapping, Filtering, Synchronization</div>
+            </div>
+          </div>
+          <div class="chips">
+            <span class="chip">Unity</span><span class="chip">Meta SDK</span><span class="chip">Face Tracking</span>
+          </div>
+          <ul>
+            <li>Built a VR experiment around Meta Quest Pro face tracking, mapping the user's expressions to a virtual character in real time to study how facial realism and noise affect uncanny-valley perception.</li>
+            <li>Introduced smoothing filters, state synchronization, subtle eye motion, and controllable material / noise variables to reduce the perceptual impact of tracking jitter, dropped input, and discontinuous expressions.</li>
+            <li>Combined XR interaction, real-time character driving, user-study design, Unity engineering, and stable real-time feedback.</li>
+          </ul>
+          <div class="project-block">
+            <div class="block-title">Engineering Challenges</div>
+            <ul>
+              <li>Balancing low-latency feedback with smooth, stable output when VR input data contains jitter, dropped frames, and discontinuities.</li>
+              <li>Keeping face tracking, character expression mapping, subtle eye motion, and material variables controlled within one experiment to avoid confounding factors.</li>
+            </ul>
+          </div>
+          <div class="links">
+            <a class="btn" href="https://github.com/ZihanWG/UncannyValleyVR" target="_blank" rel="noopener">Code / Repository</a>
+            <a class="btn" href="https://youtu.be/_U8bSjyNTWg" target="_blank" rel="noopener">Demo Video</a>
+            <a class="btn" href="https://zihanwportfolio.wordpress.com/2024/11/30/uncanny-valley-exploration-in-vr/"
+              target="_blank" rel="noopener">Technical Write-Up</a>
+          </div>
+          <div class="project-gallery">
+            <img src="assets/texture.gif" class="project-img" alt="Texture GIF" />
           </div>
         </div>
 
         <!-- 3DGS Style Transfer -->
-        <div class="card project" data-tags="cvai,graphics">
+        <div class="card project" data-tags="ai,graphics">
           <div class="cardhead">
             <div>
-              <div class="title">Real-time 3D Style Transfer (3DGS)</div>
-              <div class="meta">Role: Project Lead · PyTorch / 3D Gaussian Splatting / Computer Vision</div>
+              <div class="title">Real-Time 3D Style Transfer (3DGS Style Transfer)</div>
+              <div class="meta">Role: Project Lead | Neural Rendering, Temporal Consistency, LPIPS, Reprojection Consistency</div>
             </div>
           </div>
           <div class="chips">
-            <span class="chip">3D Gaussian Splatting</span><span class="chip">LPIPS</span><span class="chip">Reprojection Consistency</span><span
-              class="chip">Temporal Stability</span>
+            <span class="chip">PyTorch</span><span class="chip">3D Gaussian Splatting</span><span
+              class="chip">LPIPS</span>
           </div>
           <ul>
-            <li>Designed a stability-first 3D style transfer pipeline for Gaussian Splatting scenes, focusing on temporal coherence during real-time view changes.</li>
-            <li>Used perceptual and reprojection-based losses to reduce flickering and improve cross-view consistency in stylized 3D assets.</li>
-            <li>Evaluated results on NeRF-Synthetic-style scenes and reported lower warping error with improved visual coherence.</li>
+            <li>Built a real-time style-transfer pipeline for 3D Gaussian Splatting scenes, focusing on cross-view style instability and temporal flicker.</li>
+            <li>Combined perceptual loss with reprojection-consistency constraints to improve structural preservation and temporal consistency across rendered views.</li>
+            <li>Complements the core graphics work with a 3D AI / neural-rendering project combining PyTorch, computer vision, and real-time 3D representations.</li>
           </ul>
+          <div class="project-block">
+            <div class="block-title">Role Relevance</div>
+            <ul>
+              <li>Demonstrates an understanding of neural rendering, differentiable / learned visual methods, and real-time 3D representations.</li>
+              <li>Relevant to 3D AI, generative AI, NeRF / 3DGS, and roles spanning computer vision and graphics.</li>
+            </ul>
+          </div>
           <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/3DStyle_Transfer_3DGS" target="_blank" rel="noopener">Repo</a>
-            <a class="btn" href="assets/Real_Time_3D_Asset_Style_Transfer.pdf" target="_blank" rel="noopener">Write-up (PDF)</a>
+            <a class="btn" href="https://github.com/ZihanWG/3DStyle_Transfer_3DGS" target="_blank"
+              rel="noopener">Code / Repository</a>
+            <a class="btn" href="assets/Real_Time_3D_Asset_Style_Transfer.pdf" target="_blank" rel="noopener">Paper
+              (PDF)</a>
           </div>
           <div class="project-gallery">
-            <img src="assets/comparison_hotdog.png" class="project-img qr-click" alt="3DGS Style Transfer Comparison" />
-          </div>
-        </div>
-
-        <!-- Uncanny Valley VR -->
-        <div class="card project" data-tags="xr,cvai">
-          <div class="cardhead">
-            <div>
-              <div class="title">Uncanny Valley VR Experimental System</div>
-              <div class="meta">Role: VR Tech Lead · Unity / Meta SDK / Quest Pro Face Tracking</div>
-            </div>
-          </div>
-          <div class="chips">
-            <span class="chip">VR</span><span class="chip">Facial Tracking</span><span class="chip">Expression Mapping</span><span
-              class="chip">Eye Micro-motion</span><span class="chip">User Study</span>
-          </div>
-          <ul>
-            <li>Built a VR experimental system for studying uncanny valley perception through avatar facial tracking, expression mapping, eye motion, and realism/noise variations.</li>
-            <li>Implemented tracking-driven facial animation with smoothing and synchronization to compare natural expression mapping against less stable avatar behavior.</li>
-            <li>Designed interaction flow and evaluation conditions to help users identify which visual and behavioral factors increase or reduce uncanny perception.</li>
-          </ul>
-          <div class="links">
-            <a class="btn" href="https://github.com/ZihanWG/UncannyValleyVR" target="_blank" rel="noopener">Repo</a>
-            <a class="btn" href="https://youtu.be/_U8bSjyNTWg" target="_blank" rel="noopener">Video</a>
-            <a class="btn" href="https://zihanwportfolio.wordpress.com/2024/11/30/uncanny-valley-exploration-in-vr/" target="_blank"
-              rel="noopener">Write-up</a>
-          </div>
-          <div class="project-gallery">
-            <img src="assets/texture.gif" class="project-img qr-click" alt="Uncanny Valley VR Texture Experiment" />
+            <img src="assets/comparison_hotdog.png" class="project-img contain" alt="3DGS Style Transfer Comparison" />
           </div>
         </div>
 
       </div>
 
+
+    </section>
+
+    <!-- Skill Matrix -->
+    <section id="skills">
+      <h2>Skills Matrix | Aligned with Target Roles</h2>
+      <div class="skill-matrix">
+        <div class="skill-col">
+          <div class="title">Engine / Graphics Systems</div>
+          <div class="chips">
+            <span class="chip">C++</span><span class="chip">Vulkan</span><span class="chip">OpenGL</span><span class="chip">Render Graph</span>
+          </div>
+          <ul>
+            <li>Rendering-pipeline abstractions, pass organization, resource lifecycles, and descriptor / buffer / image management.</li>
+            <li>Modular shader / material / texture / framebuffer systems and integrated debugging tools.</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <div class="title">Real-Time Rendering / Performance</div>
+          <div class="chips">
+            <span class="chip">PBR</span><span class="chip">IBL</span><span class="chip">Shadow Mapping</span><span class="chip">GPU Profiling</span>
+          </div>
+          <ul>
+            <li>Direct lighting, shadows, HDR, Bloom, tone mapping, BRDF LUTs, and post-processing chains.</li>
+            <li>GPU timestamps, RenderDoc, validation layers, and profilers for rendering errors and performance bottlenecks.</li>
+          </ul>
+        </div>
+        <div class="skill-col">
+          <div class="title">Real-Time Interaction / Production</div>
+          <div class="chips">
+            <span class="chip">Unity</span><span class="chip">UE5</span><span class="chip">OpenXR</span><span class="chip">Meta SDK</span>
+          </div>
+          <ul>
+            <li>VR tracking, state synchronization, input filtering, character driving, and stable low-latency feedback.</li>
+            <li>Professional and project experience at NetEase VR, Alibaba Unity, and RIT MAGIC Spell Studios.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Deep Dives -->
+    <section id="deepdives">
+      <h2>Technical Deep Dives | Engine Development Capabilities</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="title">Vulkan Pipeline &amp; Resource Management</div>
+          <div class="meta">Dynamic Rendering / Sync2 / Image Layout / Descriptor / VMA</div>
+          <ul>
+            <li>Manage the full resource lifecycle in an explicit API: creation, upload, layout transition, synchronization, use, and destruction.</li>
+            <li>Build explainable debugging paths around image layout transitions, Synchronization2, descriptor updates, and multi-frame resource organization.</li>
+            <li>Use debug panels and GPU timestamp analysis to diagnose rendering errors, pass duration, and resource-state issues.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="title">Render Graph &amp; Pass Organization</div>
+          <div class="meta">Pass Dependency / Resource Lifetime / Barrier Management</div>
+          <ul>
+            <li>Organize rendering through declared pass reads and writes, reducing errors from hand-written state transitions and manual barrier management.</li>
+            <li>Focus on resource lifecycles, transient targets, pass boundaries, dependencies, and debug visualization—practical engine-architecture concerns.</li>
+            <li>Model how forward, deferred, and post-processing stages fit into a unified execution graph.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="title">Rendering Modules: PBR &amp; Real-Time Lighting</div>
+          <div class="meta">GGX / Fresnel / Shadow Mapping / IBL / Tone Mapping</div>
+          <ul>
+            <li>Implemented a real-time pipeline spanning direct lighting, shadows, normal mapping, HDR, Bloom, and IBL.</li>
+            <li>Extended that foundation through the UE5 BRDF project, exploring single scattering, multiple-scattering compensation, and LUT precomputation.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="title">Real-Time Systems &amp; XR Engineering</div>
+          <div class="meta">Tracking / Filtering / State Sync / Latency Handling</div>
+          <ul>
+            <li>Handled tracking jitter, dropped input, state synchronization, and continuity of real-time feedback in VR projects.</li>
+            <li>Complements engine work with engineering judgment around real-time interaction, performance stability, and user perception.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <!-- Experience -->
     <section id="experience">
       <h2>Experience</h2>
       <div class="grid">
-
         <div class="card">
-          <div class="title">RIT MAGIC Spell Studios — VR Developer (Unreal)</div>
-          <div class="meta">Aug 2025 – Present · Rochester, NY</div>
+          <div class="title">RIT · MAGIC Spell Studios | VR Developer (Unreal VR)</div>
+          <div class="meta">2025.08 – 2026.05</div>
           <ul>
-            <li>Develop VR research prototypes and immersive applications in Unreal Engine (C++/Blueprint).</li>
-            <li>Build reusable interaction/character/scene modules; integrate features for demos and user studies.</li>
-            <li>Optimize runtime performance and stability for multiple testing and showcase iterations.</li>
+            <li>Developed research-focused VR systems and immersive applications using Unreal Engine (C++ / Blueprint).</li>
+            <li>Owned VR interaction, character / scene modules, system integration, and performance tuning, including tracking jitter, state synchronization, and stable real-time feedback.</li>
           </ul>
         </div>
 
         <div class="card">
-          <div class="title">NetEase — Virtual Reality Developer Intern</div>
-          <div class="meta">Mar 2023 – Aug 2023 · Guangzhou, China</div>
+          <div class="title">NetEase (Guangzhou) | VR Development Intern</div>
+          <div class="meta">2023.03 – 2023.08</div>
           <ul>
-            <li>Developed Unity + Meta Quest VR gameplay demos; reduced frame drops by ~15% via optimization.</li>
-            <li>Improved interaction stability; increased internal test engagement by ~30%.</li>
-            <li>Collaborated with designers/artists/QA; shortened iteration cycles by ~20%.</li>
+            <li>Developed VR interaction systems and core gameplay prototypes with Unity + Meta Quest, contributing input, interaction feedback, and scene logic.</li>
+            <li>Used Unity Profiler and runtime diagnostics to investigate rendering, scripting, and interaction-path bottlenecks, reducing noticeable frame drops and improving stability in internal test scenes.</li>
           </ul>
         </div>
 
         <div class="card">
-          <div class="title">Alibaba Group — Unity Game Developer Intern</div>
-          <div class="meta">Jun 2022 – Aug 2022 · Hangzhou, China</div>
+          <div class="title">Alibaba (Hangzhou) | Unity Game Development Intern</div>
+          <div class="meta">2022.06 – 2022.08</div>
           <ul>
-            <li>Designed an inventory/resource system; reduced memory usage by ~25% and query time by ~30%.</li>
-            <li>Worked cross-functionally to improve playtest satisfaction and iteration efficiency.</li>
+            <li>Contributed to core Unity game systems and gameplay modules, owning inventory, configuration loading, and resource-management features.</li>
+            <li>Optimized data organization, lookup logic, and resource references to improve memory use, access efficiency, and maintainability.</li>
           </ul>
         </div>
-
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="grid">
-        <div class="card">
-          <div class="title">Programming</div>
-          <div class="chips">
-            <span class="chip">C++</span><span class="chip">C#</span><span class="chip">Python</span><span
-              class="chip">Java</span><span class="chip">JavaScript</span>
-          </div>
-          <ul>
-            <li>Clean, modular system design; profiling-driven optimization.</li>
-            <li>Comfortable with math-heavy graphics and interaction problems.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="title">Graphics / Engine / XR / CV-AI</div>
-          <div class="chips">
-            <span class="chip">UE5</span><span class="chip">Unity</span><span class="chip">OpenGL</span><span
-              class="chip">Vulkan</span><span class="chip">HLSL</span>
-            <span class="chip">OpenXR</span><span class="chip">Meta SDK</span>
-            <span class="chip">PyTorch</span><span class="chip">OpenCV</span>
-          </div>
-          <ul>
-            <li>Vulkan/OpenGL rendering architecture, PBR pipelines, BRDF modeling, and real-time rendering integration.</li>
-            <li>XR interaction systems, tracking-driven avatars, and 3D ML pipelines.</li>
-          </ul>
+    <!-- Resume Summary -->
+    <section id="resume">
+      <h2>Résumé Summary</h2>
+      <div class="card">
+        <h3>Zihan Wang</h3>
+        <p>
+          Computer Science M.S. focused on engine development and graphics rendering. Project experience spans Vulkan / OpenGL engine prototypes, Render Graphs, resource management, GPU debugging and performance analysis, UE5 rendering modules, VR real-time interaction systems, and 3DGS style transfer. This portfolio highlights engineering capability from low-level graphics APIs and rendering-pipeline organization to real-time system stability.
+        </p>
+        <ul>
+          <li><b>Target roles:</b> Engine Developer, Graphics Rendering Engineer, Low-Level Game Client Developer, XR Real-Time Systems Engineer.</li>
+          <li><b>Core areas:</b> Engine development, real-time rendering, rendering pipelines, graphics systems, and real-time 3D applications.</li>
+          <li><b>Core technologies:</b> C++, Vulkan, OpenGL, GLSL / HLSL, Unreal Engine 5, Unity, Meta SDK, and OpenXR.</li>
+          <li><b>Engineering strengths:</b> Resource management, Render Graphs, render-pass organization, debugging tools, GPU profiling, performance analysis, and real-time system stability.</li>
+          <li><b>Education:</b> RIT Computer Science M.S.; Xiamen University Digital Media Technology B.Eng.</li>
+        </ul>
+        <div class="links">
+          <a class="btn primary" href="assets/resume.pdf" target="_blank" rel="noopener">View Full Résumé PDF</a>
+          <a class="btn" href="https://github.com/ZihanWG" target="_blank" rel="noopener">View GitHub</a>
         </div>
       </div>
     </section>
@@ -622,43 +899,43 @@
     <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
-      <div>
+      <div class="two">
         <div class="card">
-          <div class="title">Get in touch</div>
           <ul>
-            <li>Phone: 585-434-9187</li>
+            <li>Phone: 184-6332-5253</li>
             <li>Email: <a href="mailto:zihanwang7@outlook.com">zihanwang7@outlook.com</a></li>
             <li>GitHub: <a href="https://github.com/ZihanWG" target="_blank" rel="noopener">github.com/ZihanWG</a></li>
             <li>Portfolio: <a href="https://zihanwg.github.io/portfolio.git.io/" target="_blank"
                 rel="noopener">zihanwg.github.io/portfolio.git.io</a></li>
-            <li>Resume PDF: <a href="assets/resume.pdf" target="_blank" rel="noopener">assets/resume.pdf</a></li>
+            <li>Résumé: <a href="assets/resume.pdf" target="_blank" rel="noopener">assets/resume.pdf</a></li>
           </ul>
+        </div>
+
+        <div class="card">
+          <div class="title">WeChat QR Code</div>
+          <div class="meta">Please include your name and role / recruiting context.</div>
+          <div style="margin-top:10px; display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+            <img src="assets/wechat.jpg" alt="WeChat QR" class="qrimg" title="WeChat QR" />
+          </div>
         </div>
       </div>
     </section>
 
     <div class="footer">
-      © <span id="y"></span> Zihan Wang · Built for GitHub Pages
+      © <span id="y"></span> Zihan Wang · Engine Development &amp; Real-Time Rendering Portfolio
     </div>
+  </div>
 
-    <!-- QR Modal -->
-    <div id="qrModal" style="
-    position:fixed; inset:0; background:rgba(0,0,0,.75);
-    display:none; align-items:center; justify-content:center;
-    z-index:9999; cursor:zoom-out;">
-      <img id="qrModalImg" src="" alt="Project Image Large"
-        style="max-width:90%; max-height:90%; border-radius:16px; box-shadow:0 20px 60px rgba(0,0,0,.6);" />
-    </div>
-
+  <div id="imgModal" class="img-modal" aria-hidden="true">
+    <img id="imgModalContent" src="" alt="Project image preview" />
   </div>
 
   <script>
-    // Footer year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Project filter
     const buttons = Array.from(document.querySelectorAll('.fbtn'));
     const projects = Array.from(document.querySelectorAll('.project'));
+
     function setFilter(tag) {
       buttons.forEach(b => b.classList.toggle('active', b.dataset.filter === tag));
       projects.forEach(p => {
@@ -669,19 +946,31 @@
     }
     buttons.forEach(b => b.addEventListener('click', () => setFilter(b.dataset.filter)));
 
-    // Image click to zoom
-    const clickableImages = document.querySelectorAll('.qr-click');
-    const modal = document.getElementById('qrModal');
-    const modalImg = document.getElementById('qrModalImg');
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('imgModalContent');
+    const zoomImages = Array.from(document.querySelectorAll('.project-img, .qrimg'));
 
-    clickableImages.forEach(img => {
+    zoomImages.forEach(img => {
       img.addEventListener('click', () => {
         modalImg.src = img.src;
-        modal.style.display = 'flex';
+        modalImg.alt = img.alt || 'Image preview';
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
       });
     });
+
     modal.addEventListener('click', () => {
-      modal.style.display = 'none';
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImg.src = '';
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('open')) {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
+      }
     });
   </script>
 </body>
